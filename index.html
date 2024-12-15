@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro</title>
+    <link rel="shortcut icon" href="./redCircle.png" type="image/x-icon">
+
+    <style>
+        .modalDiv{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.1);
+            transition: transform 0.4s, top 0.4s;
+            z-index: 1;
+        }
+        .open-popup{
+            visibility: visible;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    </style>
+</head>
+<body onload="openModal()">
+
+    <!-- MODAL -->
+    <div id="myModal">
+        <div class="modalDiv w-2/5 h-2/4 bg-black rounded-md text-center px-8 text-white bg-red-700" id="modal">
+            <button id="closeModal" class="closeModal float-right bg-transparent text-3xl">&times;</button>
+            <div class="flex flex-col justify-center items-center h-2/4">
+                <h2 class="text-2xl mt-16">About this site</h2>
+                <p class="text-lg mt-10">This site makes extensive use of Tailwind, CSS, JavaScript, and LocalStorage. If you press the 'start button', the working time lasts for 25 minutes, then it takes a 5-minute break and saves it to memory. If you click the 'clear button', it clears and starts the time from the beginning. You can also pause the time. And also shows the time in 'title'</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pomodoro container -->
+    <div class="container h-screen" id="container">
+        <!-- header -->
+        <header class="flex flex-row gap-2 h-14 px-6 py-2" style="border-bottom: 1px solid rgb(253, 169, 169);">
+            <div class="w-6 h-6 bg-red-700 rounded-full p-0.5 mt-2 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m10 24l10 10l20-20"/></svg>
+            </div>
+            <h1 class="text-3xl">Pomodoro</h1>
+        </header>
+
+        <!-- main -->
+        <main class="flex justify-center">
+            <div id="back" class="w-2/3 h-72 bg-red-700 text-white text-center mt-7 rounded-md flex flex-col justify-center items-center gap-6">
+                <h1 class="text-7xl"><span id="minuts">25</span> : <span id="seconds">00</span></h1>
+                <div class="flex justify-center gap-5">
+                    <button class="btn border rounded-md py-1 px-6 transition ease-in delay-100 hover:-translate-y hover:scale-110" id="startBtn">Start</button>
+                    <button class="btn border rounded-md py-1 px-6 transition ease-in delay-100 hover:-translate-y hover:scale-110" id="pauzaBtn">Pauza</button>
+                    <button class="btn border rounded-md py-1 px-6 transition ease-in delay-100 hover:-translate-y hover:scale-110" id="clearBtn">Clear</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="./modal.js"></script>
+<script src="./pomodoroWithLocalStorage.js"></script>
+</body>
+</html>
